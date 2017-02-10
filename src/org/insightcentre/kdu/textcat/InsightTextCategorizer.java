@@ -38,5 +38,5 @@ public class InsightTextCategorizer extends TextCategorizer {
         return super.getCategoryDistances(text);
     }
 
-    
+
 }
