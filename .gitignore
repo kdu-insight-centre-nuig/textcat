@@ -54,7 +54,7 @@ local.properties
 .recommenders
 
 # Added .iml and .idea (alanna.kelly@insight-centre.org 2017-02-10)
-.iml
+*.iml
 .idea/**
 
 # Eclipse Core
