@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.insightcentre.kdu</groupId>
+    <artifactId>textcat</artifactId>
+    <version>0.1</version>
+    <name>Java Text Categorizing Library</name>
+    <description>This is a of Java Text Categorizing Library (http://textcat.sourceforge.net/) by The Knowledge Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway.
+
+Derived from the original work by Thomas Hammerl.</description>
+    <url>https://github.com/kdu-insight-centre-nuig/textcat</url>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <scm>
+        <url>https://github.com/kdu-insight-centre-nuig/textcat</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License</name>
+            <url>https://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+		<developer>
+			<name>Gopal Sridhar</name>
+		</developer>
+		<developer>
+			<name>Alanna Kelly</name>
+		</developer>
+    </developers>
+</project>
