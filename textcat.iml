@@ -36,5 +36,18 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="junit-4.10" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/commons-lang3-3.5/commons-lang-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="org-apache-commons-lang" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.4.1" level="project" />
+    <orderEntry type="library" name="jest-0.0.3" level="project" />
   </component>
 </module>

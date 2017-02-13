@@ -1,42 +1,39 @@
 package org.insightcentre.kdu.textcat;
 
-import at.knallgrau.textcat.FingerPrint;
 import at.knallgrau.textcat.TextCategorizer;
-
-import java.io.FileNotFoundException;
-import java.util.Collection;
-import java.util.Map;
 
 /**
  * Created by alanna on 10/02/17.
  */
-public class InsightTextCategorizer extends TextCategorizer {
+public class InsightTextCategorizer implements InsightLanguageIdentifier {
+
+    private final static int UNKNOWN_LIMIT = 10;
+
+    private TextCategorizer textcat;
 
     public InsightTextCategorizer() {
+
     }
 
-    public InsightTextCategorizer(Collection<FingerPrint> fingerprints) {
-        super(fingerprints);
+    public void init() {
+        textcat = new TextCategorizer();
     }
 
-    public InsightTextCategorizer(String confFile) throws FileNotFoundException {
-        super(confFile);
-    }
+    /**
+     * categorizes the text passed to it
+     *
+     * @param text
+     *            text to be categorized
+     * @return the category name given in the configuration file
+     */
+    public String identifyLanguage(String text) {
+        if(text.length() < UNKNOWN_LIMIT) {
+            return "unknown";
+        }
 
-    @Override
-    public String categorize(String text) {
-        return super.categorize(text);
-    }
+        final String preprocessedText = text.toLowerCase().replaceAll("\\.|/|:"," ");
 
-    @Override
-    public String categorize(String text, int limit) {
-        return super.categorize(text, limit);
+        return textcat.categorize(preprocessedText);
     }
-
-    @Override
-    public Map<String, Integer> getCategoryDistances(String text) {
-        return super.getCategoryDistances(text);
-    }
-
 
 }

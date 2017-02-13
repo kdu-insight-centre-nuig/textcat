@@ -24,6 +24,7 @@
 ## File-based project format:
 *.iws
 
+
 ## Plugin-specific files:
 
 # IntelliJ
@@ -56,7 +57,7 @@ local.properties
 # Added .iml and .idea (alanna.kelly@insight-centre.org 2017-02-10)
 *.iml
 .idea/**
-
+*.ipr
 # Eclipse Core
 .project
 
