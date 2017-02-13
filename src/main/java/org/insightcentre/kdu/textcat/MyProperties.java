@@ -1,4 +1,4 @@
-package at.knallgrau.textcat;
+package org.insightcentre.kdu.textcat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.Hashtable;
  * Propertyclass extending java.util.Hashtable which reads textcat configuration
  * files and textcat fingerprint files.
  */
-class MyProperties extends Hashtable<String, String> implements Serializable {
+public class MyProperties extends Hashtable<String, String> implements Serializable {
 
     private static final long serialVersionUID = 3256446889091347768L;
 

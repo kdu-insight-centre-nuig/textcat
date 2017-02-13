@@ -1,4 +1,4 @@
-package at.knallgrau.textcat;
+package org.insightcentre.kdu.textcat;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,12 +21,12 @@ import java.util.regex.Pattern;
  * categories.
  * 
  */
-public class TextCategorizer {
+public class TextCategorizer implements ITextCategorizer {
 	private File confFile = null;
 
 	private final static int UNKNOWN_LIMIT = 20;
 
-	private static final String JAR_CONF_PATH = "at/knallgrau/textcat/textcat.conf";
+	private static final String JAR_CONF_PATH = "textcat.conf";
 
 	private Collection<FingerPrint> fingerprints = new ArrayList<FingerPrint>();
 
@@ -136,6 +136,7 @@ public class TextCategorizer {
 	 *            text to be categorized
 	 * @return the category name given in the configuration file
 	 */
+	@Override
 	public String categorize(String text) {
 		if (text.length() < UNKNOWN_LIMIT) {
 			return "unknown";
@@ -157,6 +158,7 @@ public class TextCategorizer {
 	 *            number of characters to be analysed
 	 * @return the category name given in the configuration file
 	 */
+	@Override
 	public String categorize(String text, int limit) {
 		if (text.length() < UNKNOWN_LIMIT) {
 			return "unknown";
@@ -175,6 +177,7 @@ public class TextCategorizer {
 	 *            text to be categorized
 	 * @return HashMap with categories as keys and distances as values
 	 */
+	@Override
 	public Map<String, Integer> getCategoryDistances(String text) {
 		if (this.fingerprints.isEmpty()) {
 			loadCategories();

@@ -1,4 +1,4 @@
-package at.knallgrau.textcat;
+package org.insightcentre.kdu.textcat;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,8 +1,5 @@
 package org.insightcentre.kdu.textcat;
 
-import at.knallgrau.textcat.FingerPrint;
-import at.knallgrau.textcat.FingerPrintFileException;
-
 import java.io.InputStream;
 
 /**
