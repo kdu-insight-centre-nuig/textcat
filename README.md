@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a of Java Text Categorizing Library by The Knowledge Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway.
+This is a fork of Java Text Categorizing Library by The Knowledge Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway. Based on the original available at http://textcat.sourceforge.net/.
 
 ## Rationale for Fork
 
