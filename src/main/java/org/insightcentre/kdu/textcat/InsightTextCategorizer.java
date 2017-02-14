@@ -58,7 +58,7 @@ public class InsightTextCategorizer implements ITextCategorizer {
             return "unknown";
         }
 
-        String preprocessedText = text.toLowerCase().replaceAll("http.*?\\s", " ").replaceAll("\\.|/|:"," ");
+        String preprocessedText = text.toLowerCase().replaceAll("\\.|/|:"," ");
         FingerPrint fp = new FingerPrint();
         fp.create(preprocessedText);
         fp.categorize(fingerprints);

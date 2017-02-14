@@ -1,16 +1,11 @@
 //import io.redlink.ssix.pipeline.model.Content;
 //import io.redlink.ssix.pipeline.nlp.impl.LanguageIdentifierTextCat;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.*;
-import org.insightcentre.kdu.textcat.Content;
 import org.insightcentre.kdu.textcat.InsightTextCategorizer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 /**
  * Language Identifier TextCat tests
@@ -48,7 +43,7 @@ public class LanguageIdentifierTextCatTest {
         Assert.assertEquals("en", identify("$AAPL received a new alert. Find out why at https://t.co/nZwqReM0tj #stocks #daytrading #trading #mkt #NYSE #NASDAQ #markets 43"));
         Assert.assertEquals("en", identify("RT @The_Real_Fly: $AAPL downgraded at Barclays"));
         Assert.assertEquals("en", identify("Find #stocks to #trade with https://t.co/uAcamNRUPt $AAPL $MCUR +181% https://t.co/e2zXG3II89 $GLBS $MRNS $HMNY $ASTI $ACST $GMAN"));
-        //Assert.assertEquals("en", identify("RT @MarketCurrents: Qualcomm weighs countersuit against Apple https://t.co/4mmfqvJ01h $ QCOM $ AAPL"));
-        //Assert.assertEquals("en", identify("RT @jmleray: Long-standing Apple bull steps back https://t.co/sAHCSr5ByD $AAPL"));
+        Assert.assertEquals("en", identify("RT @MarketCurrents: Qualcomm weighs countersuit against Apple https://t.co/4mmfqvJ01h $ QCOM $ AAPL"));
+        Assert.assertEquals("en", identify("RT @jmleray: Long-standing Apple bull steps back https://t.co/sAHCSr5ByD $AAPL"));
     }
 }
