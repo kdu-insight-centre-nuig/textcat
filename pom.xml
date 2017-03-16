@@ -1,16 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.insight-centre </groupId>
+    <groupId>org.insight-centre</groupId>
     <artifactId>textcat</artifactId>
     <version>0.1</version>
     <name>Java Text Categorizing Library</name>
-    <description>This is a of Java Text Categorizing Library (http://textcat.sourceforge.net/) by The Knowledge Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway.
+    <description>This is a of Java Text Categorizing Library (http://textcat.sourceforge.net/) by The Knowledge
+        Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway.
 
-Derived from the original work by Thomas Hammerl.</description>
+        Derived from the original work by Thomas Hammerl.
+    </description>
     <url>https://github.com/kdu-insight-centre-nuig/textcat</url>
     <dependencies>
         <dependency>
@@ -32,6 +35,34 @@ Derived from the original work by Thomas Hammerl.</description>
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <scm>
         <url>https://github.com/kdu-insight-centre-nuig/textcat</url>
     </scm>
@@ -43,12 +74,12 @@ Derived from the original work by Thomas Hammerl.</description>
         </license>
     </licenses>
     <developers>
-		<developer>
-			<name>Gopal Sridhar</name>
-		</developer>
-		<developer>
-			<name>Alanna Kelly</name>
+        <developer>
+            <name>Gopal Sridhar</name>
+        </developer>
+        <developer>
+            <name>Alanna Kelly</name>
             <email>alanna.kelly@insight-centre.org</email>
-		</developer>
+        </developer>
     </developers>
 </project>

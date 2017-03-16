@@ -7,11 +7,6 @@ import java.io.InputStream;
  */
 public class InsightFingerPrint extends FingerPrint {
 
-    public InsightFingerPrint(){
-
-    }
-
-
     public InsightFingerPrint(InputStream resourceAsStream) throws FingerPrintFileException {
         super(resourceAsStream);
     }
