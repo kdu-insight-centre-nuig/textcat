@@ -1,6 +1,6 @@
 //import io.redlink.ssix.pipeline.model.Content;
 //import io.redlink.ssix.pipeline.nlp.impl.LanguageIdentifierTextCat;
-import org.insightcentre.kdu.textcat.InsightTextCategorizer;
+import org.insight_centre.kdu.textcat.InsightTextCategorizer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package org.insightcentre.kdu.textcat;
+package org.insight_centre.kdu.textcat;
 
 import java.util.Comparator;
 import java.util.Map.Entry;

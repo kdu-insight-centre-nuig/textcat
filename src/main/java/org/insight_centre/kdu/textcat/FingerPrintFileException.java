@@ -1,4 +1,4 @@
-package org.insightcentre.kdu.textcat;
+package org.insight_centre.kdu.textcat;
 
 public class FingerPrintFileException extends Exception {
     private static final long serialVersionUID = -9000607002978507668L;
