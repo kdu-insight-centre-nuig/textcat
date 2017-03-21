@@ -26,7 +26,7 @@ public class TextCategorizer implements ITextCategorizer {
 
 	private final static int UNKNOWN_LIMIT = 20;
 
-	private static final String JAR_CONF_PATH = "textcat.conf";
+	private static final String JAR_CONF_PATH = "textcaTweet.conf";
 
 	private Collection<FingerPrint> fingerprints = new ArrayList<FingerPrint>();
 
