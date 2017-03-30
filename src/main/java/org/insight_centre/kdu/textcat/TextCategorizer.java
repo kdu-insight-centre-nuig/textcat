@@ -79,7 +79,7 @@ public class TextCategorizer implements ITextCategorizer {
 	 * in the configuration file.
 	 */
 	private void loadCategories() {
-		this.fingerprints.clear();
+		this.fingerprints = new ArrayList<>();
 		MyProperties properties = new MyProperties();
 		if (this.confFile == null) {
 			properties.load(TextCategorizer.class.getClassLoader()
