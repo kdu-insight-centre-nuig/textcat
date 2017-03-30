@@ -33,12 +33,11 @@ public class FingerPrint implements Serializable {
     private Map<String, Integer> categoryDistances = new HashMap<String, Integer>();
 
     /**
-         * Set of NGrams sorted by the number of occurences in the text which
+         * Set of NGrams sorted by the number of occurrences in the text which
          * was used for creating the FingerPrint.
          * 
          */
-    private SortedSet<Entry<String, Integer>> entries = new TreeSet<Entry<String, Integer>>(
-	    new NGramEntryComparator());;
+    private SortedSet<Entry<String, Integer>> entries = new TreeSet<>(new NGramEntryComparator());
 
     public FingerPrint() {
     }
@@ -84,20 +83,20 @@ public class FingerPrint implements Serializable {
          *                 thrown when given file does not exist
          */
     public void create(File file) throws FileNotFoundException {
-	char[] data = new char[1024];
-	String s = "";
-	int read;
-	FileReader fr = new FileReader(file);
-	try {
-	    while ((read = fr.read(data)) != -1) {
-		s += new String(data, 0, read);
-	    }
-	    fr.close();
-	} catch (IOException ioe) {
-	    ioe.printStackTrace();
-	    return;
-	}
-	this.create(s);
+		char[] data = new char[1024];
+		String s = "";
+		int read;
+		FileReader fr = new FileReader(file);
+		try {
+			while ((read = fr.read(data)) != -1) {
+			s += new String(data, 0, read);
+			}
+			fr.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+			return;
+		}
+		this.create(s);
     }
 
     /**
@@ -108,15 +107,15 @@ public class FingerPrint implements Serializable {
          *                text to be analysed
          */
     public void create(String text) {
-	this.ngrams.clear();
-	this.computeNGrams(1, 5, text);
-	if (this.ngrams.containsKey("_")) {
-	    int blanksScore = this.ngrams.remove("_");
-	    this.ngrams.put("_", blanksScore / 2);
-	}
+		this.ngrams.clear();
+		this.computeNGrams(1, 5, text);
+		if (this.ngrams.containsKey("_")) {
+			int blanksScore = this.ngrams.remove("_");
+			this.ngrams.put("_", blanksScore / 2);
+		}
 
-	this.entries.clear();
-	this.entries.addAll(this.ngrams.entrySet());
+		this.entries.clear();
+		this.entries.addAll(this.ngrams.entrySet());
     }
 
     /**
@@ -169,16 +168,16 @@ public class FingerPrint implements Serializable {
 	     * @return categorized
          */
     public Map<String, Integer> categorize(Collection<FingerPrint> categories) {
-	int minDistance = Integer.MAX_VALUE;
-	for (FingerPrint fp : categories) {
-	    int distance = this.computeDistanceTo(fp);
-	    this.getCategoryDistances().put(fp.getCategory(), distance);
-	    if (distance < minDistance) {
-		minDistance = distance;
-		this.category = fp.getCategory();
-	    }
-	}
-	return this.getCategoryDistances();
+		int minDistance = Integer.MAX_VALUE;
+		for (FingerPrint fp : categories) {
+			int distance = this.computeDistanceTo(fp);
+			this.getCategoryDistances().put(fp.getCategory(), distance);
+			if (distance < minDistance) {
+			minDistance = distance;
+			this.category = fp.getCategory();
+			}
+		}
+		return this.getCategoryDistances();
     }
 
     public Map<String, Integer> getCategoryDistances() {
@@ -194,22 +193,22 @@ public class FingerPrint implements Serializable {
          * @return the distance of the passed FingerPrint to this FingerPrint
          */
     private int computeDistanceTo(FingerPrint category) {
-	int distance = 0;
-	int count = 0;
-	for (Entry<String, Integer> entry : this.entries) {
-	    String ngram = entry.getKey();
-	    count++;
-	    if (count > 400) {
-		break;
-	    }
-	    if (!category.containsNgram(ngram)) {
-		distance += category.numNgrams();
-	    } else {
-		distance += Math.abs(this.getPosition(ngram)
-			- category.getPosition(ngram));
-	    }
-	}
-	return distance;
+		int distance = 0;
+		int count = 0;
+		for (Entry<String, Integer> entry : this.entries) {
+			String ngram = entry.getKey();
+			count++;
+			if (count > 400) {
+			break;
+			}
+			if (!category.containsNgram(ngram)) {
+			distance += category.numNgrams();
+			} else {
+			distance += Math.abs(this.getPosition(ngram)
+				- category.getPosition(ngram));
+			}
+		}
+		return distance;
     }
 
     public boolean containsNgram(String ngram) {
@@ -227,38 +226,36 @@ public class FingerPrint implements Serializable {
          *                InputStream to be read
          * @throws FingerPrintFileException
          */
-    private void loadFingerPrintFromInputStream(InputStream is)
-	    throws FingerPrintFileException {
-	this.loadFingerPrintFromInputStream(is, "UTF-8");
+    private void loadFingerPrintFromInputStream(InputStream is) throws FingerPrintFileException {
+		this.loadFingerPrintFromInputStream(is, "UTF-8");
     }
 
-    private void loadFingerPrintFromInputStream(InputStream is, String encoding)
-	    throws FingerPrintFileException {
-	this.entries.clear();
-	MyProperties properties = new MyProperties();
-	try {
-	    String line;
-	    InputStreamReader isr = new InputStreamReader(is, encoding);
-	    BufferedReader reader = new BufferedReader(isr);
-	    while ((line = reader.readLine()) != null) {
-		if (!line.equals("")) {
-		    String[] property = line.split("\\s+");
-		    if (property.length >= 2) {
-			properties.put(property[0], property[1]);
-		    }
+    private void loadFingerPrintFromInputStream(InputStream is, String encoding) throws FingerPrintFileException {
+		this.entries.clear();
+		MyProperties properties = new MyProperties();
+		try {
+			String line;
+			InputStreamReader isr = new InputStreamReader(is, encoding);
+			BufferedReader reader = new BufferedReader(isr);
+			while ((line = reader.readLine()) != null) {
+			if (!line.equals("")) {
+				String[] property = line.split("\\s+");
+				if (property.length >= 2) {
+				properties.put(property[0], property[1]);
+				}
+			}
+			}
+			/* properties.load(is); */
+			for (Entry<String, String> entry : properties.entrySet()) {
+			this.ngrams.put(entry.getKey(), Integer.parseInt(entry
+				.getValue()));
+			}
+			entries.addAll(this.ngrams.entrySet());
+		} catch (UnsupportedEncodingException e) {
+			throw new FingerPrintFileException(e);
+		} catch (IOException e) {
+			throw new FingerPrintFileException(e);
 		}
-	    }
-	    /* properties.load(is); */
-	    for (Entry<String, String> entry : properties.entrySet()) {
-		this.ngrams.put(entry.getKey(), Integer.parseInt(entry
-			.getValue()));
-	    }
-	    entries.addAll(this.ngrams.entrySet());
-	} catch (UnsupportedEncodingException e) {
-	    throw new FingerPrintFileException(e);
-	} catch (IOException e) {
-	    throw new FingerPrintFileException(e);
-	}
     }
 
     /**
@@ -268,29 +265,28 @@ public class FingerPrint implements Serializable {
          *                FingerPrint file to be read
          * @throws FingerPrintFileException
          */
-    private void loadFingerPrintFromFile(String file)
-	    throws FingerPrintFileException {
-	File fpFile = new File(file);
-	if (!fpFile.isDirectory()) {
-	    try {
-		String encoding = null;
-		File f = new File(file);
-		Matcher matcher = filePattern.matcher(f.getName());
-		if (matcher.matches()) {
-		    encoding = matcher.group(1);
-		}
+    private void loadFingerPrintFromFile(String file) throws FingerPrintFileException {
+		File fpFile = new File(file);
+		if (!fpFile.isDirectory()) {
+			try {
+			String encoding = null;
+			File f = new File(file);
+			Matcher matcher = filePattern.matcher(f.getName());
+			if (matcher.matches()) {
+				encoding = matcher.group(1);
+			}
 
-		FileInputStream fis = new FileInputStream(file.toString());
+			FileInputStream fis = new FileInputStream(file.toString());
 
-		if (encoding != null) {
-		    this.loadFingerPrintFromInputStream(fis, encoding);
-		} else {
-		    this.loadFingerPrintFromInputStream(fis);
+			if (encoding != null) {
+				this.loadFingerPrintFromInputStream(fis, encoding);
+			} else {
+				this.loadFingerPrintFromInputStream(fis);
+			}
+			} catch (FileNotFoundException e) {
+			throw new FingerPrintFileException(e);
+			}
 		}
-	    } catch (FileNotFoundException e) {
-		throw new FingerPrintFileException(e);
-	    }
-	}
     }
 
     /**
@@ -303,19 +299,19 @@ public class FingerPrint implements Serializable {
          * @return the position of the NGram in the FingerPrint
          */
     public int getPosition(String key) {
-	int pos = 1;
+		int pos = 1;
 
-	int value = this.entries.first().getValue();
-	for (Entry<String, Integer> entry : this.entries) {
-	    if (value != entry.getValue()) {
-		value = entry.getValue();
-		pos++;
-	    }
-	    if (entry.getKey().equals(key)) {
-		return pos;
-	    }
-	}
-	return -1;
+		int value = this.entries.first().getValue();
+		for (Entry<String, Integer> entry : this.entries) {
+			if (value != entry.getValue()) {
+			value = entry.getValue();
+			pos++;
+			}
+			if (entry.getKey().equals(key)) {
+			return pos;
+			}
+		}
+		return -1;
     }
 
     /**
@@ -323,18 +319,18 @@ public class FingerPrint implements Serializable {
          * execution path.
          */
     public void save() {
-	File file = new File(this.getCategory() + "-utf8.lm");
-	try {
-	    if (file.createNewFile()) {
-		FileOutputStream fos = new FileOutputStream(file);
-		fos.write(this.toString().getBytes("utf8"));
-		fos.close();
-	    }
-	} catch (FileNotFoundException fnfe) {
-	    fnfe.printStackTrace();
-	} catch (IOException ioe) {
-	    ioe.printStackTrace();
-	}
+		File file = new File(this.getCategory() + "-utf8.lm");
+		try {
+			if (file.createNewFile()) {
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(this.toString().getBytes("utf8"));
+			fos.close();
+			}
+		} catch (FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
     }
 
     /**
@@ -351,11 +347,11 @@ public class FingerPrint implements Serializable {
          * returns the FingerPrint as a String in the FingerPrint file-format
          */
     public String toString() {
-	String s = "";
-	for (Entry<String, Integer> entry : entries) {
-	    s += entry.getKey() + "\t" + entry.getValue() + "\n";
-	}
-	return s;
+		String s = "";
+		for (Entry<String, Integer> entry : entries) {
+			s += entry.getKey() + "\t" + entry.getValue() + "\n";
+		}
+		return s;
     }
 
     /**
@@ -365,7 +361,7 @@ public class FingerPrint implements Serializable {
          *                the category
          */
     protected void setCategory(String category) {
-	this.category = category;
+		this.category = category;
     }
 
 }
