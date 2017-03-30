@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
  * 
  */
 public class TextCategorizer implements ITextCategorizer {
+
 	private File confFile = null;
 
 	private final static int UNKNOWN_LIMIT = 20;
