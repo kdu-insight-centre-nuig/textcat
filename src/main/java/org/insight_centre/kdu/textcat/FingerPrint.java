@@ -48,7 +48,7 @@ public class FingerPrint implements Serializable {
          * the passed path.
          * 
          * @param file path to the FingerPrint-file
-         * @throws FingerPrintFileException
+         * @throws FingerPrintFileException error printing fingerprint
          */
     public FingerPrint(String file) throws FingerPrintFileException {
 		this.loadFingerPrintFromFile(file);
