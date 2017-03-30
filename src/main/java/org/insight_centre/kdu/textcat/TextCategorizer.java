@@ -144,7 +144,7 @@ public class TextCategorizer implements ITextCategorizer {
 			return "unknown";
 		}
 
-		//FIME
+		//FIXME
 		if (fingerprints == null) {
 			this.loadCategories();
 		}
