@@ -51,7 +51,7 @@ public class FingerPrint implements Serializable {
          * @throws FingerPrintFileException
          */
     public FingerPrint(String file) throws FingerPrintFileException {
-	this.loadFingerPrintFromFile(file);
+		this.loadFingerPrintFromFile(file);
     }
 
     /**
@@ -136,28 +136,28 @@ public class FingerPrint implements Serializable {
          * @param text
          */
     private void computeNGrams(int startOrder, int maxOrder, String text) {
-	String[] tokens = text.split("\\s");
+		String[] tokens = text.split("\\s");
 
-	for (int order = startOrder; order <= maxOrder; ++order) {
+		for (int order = startOrder; order <= maxOrder; ++order) {
 
-	    for (String token : tokens) {
-		token = "_" + token + "_";
+			for (String token : tokens) {
+			token = "_" + token + "_";
 
-		for (int i = 0; i < (token.length() - order + 1); i++) {
-		    String ngram = token.substring(i, i + order);
+			for (int i = 0; i < (token.length() - order + 1); i++) {
+				String ngram = token.substring(i, i + order);
 
-		    Matcher matcher = pattern.matcher(ngram);
-		    if (!matcher.find()) {
-			continue;
-		    } else if (!this.ngrams.containsKey(ngram)) {
-			this.ngrams.put(ngram, 1);
-		    } else {
-			int score = this.ngrams.remove(ngram);
-			this.ngrams.put(ngram, ++score);
-		    }
+				Matcher matcher = pattern.matcher(ngram);
+				if (!matcher.find()) {
+				continue;
+				} else if (!this.ngrams.containsKey(ngram)) {
+				this.ngrams.put(ngram, 1);
+				} else {
+				int score = this.ngrams.remove(ngram);
+				this.ngrams.put(ngram, ++score);
+				}
+			}
+			}
 		}
-	    }
-	}
     }
 
     /**

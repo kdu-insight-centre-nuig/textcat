@@ -1,5 +1,6 @@
 package org.insight_centre.kdu.textcat;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map.Entry;
 
@@ -11,7 +12,7 @@ import java.util.Map.Entry;
  * order.
  * 
  */
-class NGramEntryComparator implements Comparator<Entry<String, Integer>> {
+class NGramEntryComparator implements Comparator<Entry<String, Integer>>, Serializable {
 
     /**
          * @param entry1
