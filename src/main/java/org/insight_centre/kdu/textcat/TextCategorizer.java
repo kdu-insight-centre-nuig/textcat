@@ -29,11 +29,12 @@ public class TextCategorizer implements ITextCategorizer {
 
 	private static final String JAR_CONF_PATH = "textcaTweet.conf";
 
-	private Collection<FingerPrint> fingerprints = new ArrayList<FingerPrint>();
+	private transient Collection<FingerPrint> fingerprints;
 
 	private final Pattern filePattern = Pattern.compile(".*\\-(.*)\\.lm$");
 
 	public TextCategorizer() {
+		this.fingerprints = new ArrayList<>();
 		this.loadCategories();
 	}
 

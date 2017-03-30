@@ -20,8 +20,6 @@ import java.util.regex.Pattern;
  */
 public class FingerPrint implements Serializable {
 
-    private Map<String, Integer> ngrams = new HashMap<String, Integer>();
-
     private static final long serialVersionUID = -2790111752993314113L;
 
     private final Pattern filePattern = Pattern.compile("-(.*)\\.lm$");
@@ -30,7 +28,9 @@ public class FingerPrint implements Serializable {
 
     private String category = "unknown";
 
-    private Map<String, Integer> categoryDistances = new HashMap<String, Integer>();
+	private Map<String, Integer> ngrams = new HashMap<>();
+
+    private Map<String, Integer> categoryDistances = new HashMap<>();
 
     /**
          * Set of NGrams sorted by the number of occurrences in the text which
