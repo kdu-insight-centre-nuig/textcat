@@ -143,6 +143,12 @@ public class TextCategorizer implements ITextCategorizer {
 		if (text.length() < UNKNOWN_LIMIT) {
 			return "unknown";
 		}
+
+		//FIME
+		if (fingerprints == null) {
+			this.loadCategories();
+		}
+
 		FingerPrint fp = new FingerPrint();
 		fp.create(text);
 		fp.categorize(fingerprints);
