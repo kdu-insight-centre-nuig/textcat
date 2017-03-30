@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.insight-centre</groupId>
     <artifactId>textcat</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <name>Java Text Categorizing Library</name>
     <description>This is a of Java Text Categorizing Library (http://textcat.sourceforge.net/) by The Knowledge
         Discovery Unit (KDU), Insight Centre for Data Analytics, National University of Ireland, Galway.
