@@ -47,8 +47,7 @@ public class FingerPrint implements Serializable {
          * creates a FingerPrint by reading the FingerPrint-file referenced by
          * the passed path.
          * 
-         * @param file
-         *                path to the FingerPrint-file
+         * @param file path to the FingerPrint-file
          * @throws FingerPrintFileException
          */
     public FingerPrint(String file) throws FingerPrintFileException {
@@ -58,17 +57,22 @@ public class FingerPrint implements Serializable {
     /**
          * creates a FingerPrint by reading it with the passed InputStream
          * 
-         * @param is
-         *                InputStream for reading the FingerPrint
-         * @throws FingerPrintFileException
+         * @param is InputStream for reading the FingerPrint
+         * @throws FingerPrintFileException error printing fingerprint
          */
     public FingerPrint(InputStream is) throws FingerPrintFileException {
-	this.loadFingerPrintFromInputStream(is);
+		this.loadFingerPrintFromInputStream(is);
     }
 
-    public FingerPrint(InputStream is, String encoding)
-	    throws FingerPrintFileException {
-	this.loadFingerPrintFromInputStream(is, encoding);
+	/**
+	 * creates a FingerPrint by reading it with the passed InputStream
+	 *
+	 * @param is InputStream for reading the FingerPrint
+	 * @param encoding Stream encoding
+	 * @throws FingerPrintFileException error printing fingerprint
+	 */
+    public FingerPrint(InputStream is, String encoding) throws FingerPrintFileException {
+		this.loadFingerPrintFromInputStream(is, encoding);
     }
 
     /**
@@ -161,7 +165,8 @@ public class FingerPrint implements Serializable {
          * FingerPrints in the passed Collection. the category of the
          * FingerPrint with the lowest distance is assigned to this FingerPrint.
          * 
-         * @param categories
+         * @param categories categories
+	     * @return categorized
          */
     public Map<String, Integer> categorize(Collection<FingerPrint> categories) {
 	int minDistance = Integer.MAX_VALUE;
@@ -314,7 +319,7 @@ public class FingerPrint implements Serializable {
     }
 
     /**
-         * saves the fingerprint to a file named <categoryname>.lm in the
+         * saves the fingerprint to a file named 'categoryname'.lm in the
          * execution path.
          */
     public void save() {

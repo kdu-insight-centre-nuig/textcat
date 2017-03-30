@@ -193,7 +193,7 @@ public class TextCategorizer implements ITextCategorizer {
 	 * reads from stdin til EOF is read. prints the determined category of the
 	 * input and terminates afterwards.
 	 * 
-	 * @param args
+	 * @param args cli arguments
 	 */
 	public static void main(String[] args) {
 		char[] data = new char[1024];
